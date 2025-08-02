@@ -32,7 +32,6 @@ void print_array(int v[])
 int main()
 {
     int v[N] = {5, 3, 83, 32, 13, 1};
-    int v2[N] = {5, 3, 83, 32, 13, 1};
 
     printf("Initial array: ");
     print_array(v);
