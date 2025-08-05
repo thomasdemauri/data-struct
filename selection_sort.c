@@ -12,11 +12,11 @@ void print_array(int v[], int len)
 
 void selection_sort(int v[], int len)
 {
-    for (int j=0; j<len; j++) {
+    for (int j=0; j<len-1; j++) {
 
         int smallest_index = j;
 
-        for (int k=j; k<len; k++) {
+        for (int k=j+1; k<len; k++) {
 
             if (v[k] < v[smallest_index]) smallest_index = k;
 
