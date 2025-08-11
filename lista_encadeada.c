@@ -40,7 +40,17 @@ void pop(Node **head) {
 }
 
 // Remove first element
-void shift() {}
+void shift(Node **head) {
+
+    Node *tmp = *head;
+    Node *next;
+
+    next = tmp->next;
+
+    free(tmp);
+    *head = next;
+
+}
 
 void display(Node **head)
 {
@@ -70,6 +80,10 @@ int main()
     display(&head);
 
     pop(&head);
+
+    display(&head);
+
+    shift(&head);
 
     display(&head);
 
