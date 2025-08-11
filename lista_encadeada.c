@@ -25,6 +25,23 @@ void append(Node **head, int number)
     return;
 }
 
+// Remove last element
+void pop(Node **head) {
+
+    Node *tmp = *head;
+
+    while (tmp->next->next != NULL) {
+        tmp = tmp->next;
+    }
+
+    free(tmp->next);
+    tmp->next = NULL;
+
+}
+
+// Remove first element
+void shift() {}
+
 void display(Node **head)
 {
     Node *tmp = *head;
@@ -47,6 +64,12 @@ int main()
 
     append(&head, 26);
     append(&head, 32);
+    append(&head, 46);
+    append(&head, 124);
+
+    display(&head);
+
+    pop(&head);
 
     display(&head);
 
