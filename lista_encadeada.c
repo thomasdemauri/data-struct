@@ -10,15 +10,22 @@ typedef struct _node
 
 void append(Node **head, int number)
 {
+    Node *new = malloc(sizeof(Node));
+    new->number = number;
+    new->next = NULL;
+
     Node *tmp = *head;
+
+    if (*head == NULL) {
+        *head = new;
+        return;
+    }
+
 
     while (tmp->next != NULL) {
         tmp = tmp->next;
     }
 
-    Node *new = malloc(sizeof(Node));
-    new->number = number;
-    new->next = NULL;
 
     tmp->next = new;
     
@@ -27,6 +34,14 @@ void append(Node **head, int number)
 
 // Remove last element
 void pop(Node **head) {
+
+    if (*head == NULL) return;
+
+    if ((*head)->next == NULL) {
+        free(*head);
+        *head = NULL;
+        return;
+    }
 
     Node *tmp = *head;
 
@@ -42,13 +57,17 @@ void pop(Node **head) {
 // Remove first element
 void shift(Node **head) {
 
-    Node *tmp = *head;
-    Node *next;
+    if (*head == NULL) return;
 
-    next = tmp->next;
+    Node *tmp = *head;
+
+    if (tmp->next != NULL) {
+        *head = tmp->next;
+    } else {
+        *head = NULL;
+    }
 
     free(tmp);
-    *head = next;
 
 }
 
@@ -72,16 +91,16 @@ int main()
     head->number = 10;
     head->next = NULL;
 
-    append(&head, 26);
-    append(&head, 32);
-    append(&head, 46);
-    append(&head, 124);
+    // append(&head, 26);
+    // append(&head, 32);
+    // append(&head, 46);
+    // append(&head, 124);
 
     display(&head);
 
-    pop(&head);
+    // pop(&head);
 
-    display(&head);
+    // display(&head);
 
     shift(&head);
 
